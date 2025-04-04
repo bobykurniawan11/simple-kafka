@@ -70,6 +70,7 @@ const setupMetaConsumer = async () => {
             if (value) {
                 try {
                     const data = JSON.parse(value);
+                    console.log(data);
                 } catch (error) {
                     console.error('Error processing Meta webhook message:', error);
                 }
