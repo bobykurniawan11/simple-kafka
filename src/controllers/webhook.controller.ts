@@ -35,7 +35,6 @@ export const verifyWebhook = (req: Request, res: Response) => {
 export const processWebhook = async (req: Request, res: Response) => {
     const body = req.body;
     const currentTime = new Date().toISOString();
-    console.log(`Received webhook event at ${currentTime}:`, body);
 
     await kafkaProducer.send({
         topic: process.env.KAFKA_TOPIC || 'meta-webhook-topic',

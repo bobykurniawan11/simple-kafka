@@ -7,7 +7,6 @@ import { kafkaProducer } from '../services/kafka.producer';
 export const processWahaWebhook = async (req: Request, res: Response) => {
     const body = req.body;
     const currentTime = new Date().toISOString();
-        console.log(`Received webhook event at ${currentTime}:`, body);
 
     await kafkaProducer.send({
         topic: "waha-hook",
