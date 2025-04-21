@@ -21,6 +21,7 @@ app.use('/api', webhookRoutes);
 
 
 
+
 app.get('/api/env-vars', (req, res) => {
     res.json(process.env)
 });
@@ -59,7 +60,7 @@ const processMetaEvent = async (topic: string, data: any) => {
 const setupMetaConsumer = async () => {
     await metaWebhookConsumer.connect();
     await metaWebhookConsumer.subscribe({
-        topics: [process.env.KAFKA_TOPIC || 'meta-webhook-topic'],
+        topics: [process.env.KAFKA_TOPIC || 'meta-webhook-topic', "waha-hook"],
         fromBeginning: true
     });
 
