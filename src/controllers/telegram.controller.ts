@@ -8,6 +8,8 @@ export const processTelegramWebhook = async (req: Request, res: Response) => {
     const body = req.body;
     const currentTime = new Date().toISOString();
 
+    console.log(`Received telegram webhook event at ${currentTime}:`, body);
+
     await kafkaProducer.send({
         topic: "telegram-hook",
         messages: [{ value: JSON.stringify(body) }],
